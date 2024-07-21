@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    Options -Multiviews
+    RewriteEngine On
+    RewriteBase /MVC/public
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f 
+    RewriteRule  ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+
+# <IfModule mod_rewrite.c>: Checks if the mod_rewrite module is enabled in Apache.
+# Options -Multiviews: Disables multiviews, which could otherwise interfere with URL rewriting.
+# RewriteEngine On: Enables the URL rewriting engine.
+# RewriteBase /MVC/public: Sets the base URL path for rewriting to /MVC/public.
+# RewriteCond %{REQUEST_FILENAME} !-d: Checks if the requested URL is not a directory.
+# RewriteCond %{REQUEST_FILENAME} !-f: Checks if the requested URL is not a file.
+# RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]: If the above conditions are met, rewrites the URL to index.php?url=$1, where $1 is the captured part of the URL after the base.
+# [QSA,L] means "query string append" and "last" respectively, indicating to pass existing query parameters and stop processing further rules.
+# </IfModule>: Ends the conditional block for mod_rewrite.
