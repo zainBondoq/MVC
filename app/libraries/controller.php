@@ -1,26 +1,26 @@
-<!-- the main controller class and each other controller will extends this class
-this will loads the model and views
--->
-
 <?php
-
-class Controller {
-    // Load model 
+  /*
+   * Base Controller
+   * Loads the models and views
+   */
+  class Controller {
+    // Load model
     public function model($model){
-        // Require model file
-        require_once '../models/' . $model . '.php';
+      // Require model file
+      require_once '../app/models/' . $model . '.php';
 
-        // Instantiate the model 
-        return new $model();
+      // Instatiate model
+      return new $model();
     }
 
-    // Load view 
+    // Load view
     public function view($view, $data = []){
-        // Check view file
-        if(file_exists('../views/' . $view . '.php')){
-            require_once '../views/' . $view . '.php';
-        }else{
-            die('View does not exist');
-        }
+      // Check for view file
+      if(file_exists('../app/views/' . $view . '.php')){
+        require_once '../app/views/' . $view . '.php';
+      } else {
+        // View does not exist
+        die('View does not exist');
+      }
     }
-}
+  }
