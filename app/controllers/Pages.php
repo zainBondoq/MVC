@@ -2,16 +2,14 @@
 
 class Pages extends Controller {
     public function __construct() {
-
-    
+        // Constructor code if needed
     }
 
     public function index(){
-        $this->view('hello');
+        $this->view('pages/index' ,['tittle' => 'welcome']);
     }
 
-    public function about($id){
-        echo 'this is the about page ' .$id;
-        
+    public function about(){
+        $this->view('pages/about');        
     }
 }

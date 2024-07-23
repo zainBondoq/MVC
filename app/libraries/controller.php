@@ -5,27 +5,22 @@ this will loads the model and views
 <?php
 
 class Controller {
-    // load model 
+    // Load model 
     public function model($model){
-        // require model file
-        require_once '../models' . $model . 'php';
+        // Require model file
+        require_once '../models/' . $model . '.php';
 
-        // instantiate the model 
+        // Instantiate the model 
         return new $model();
     }
 
-
-    //load view 
-
-    public function view ($view, $data = []){
-        // check view file
-        if(file_exists('../views' . $view .'php')){
-            require_once '../views' . $view .'php';
+    // Load view 
+    public function view($view, $data = []){
+        // Check view file
+        if(file_exists('../views/' . $view . '.php')){
+            require_once '../views/' . $view . '.php';
         }else{
-            die('View does not exsist');
+            die('View does not exist');
         }
     }
-
-
-
 }
